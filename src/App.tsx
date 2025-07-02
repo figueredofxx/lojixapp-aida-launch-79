@@ -11,6 +11,7 @@ import LoginPage from "./pages/LoginPage";
 import PlanosPage from "./pages/PlanosPage";
 import RenovacaoPage from "./pages/RenovacaoPage";
 import VendaFinalizadaPage from "./pages/VendaFinalizadaPage";
+import OnboardingPage from "./pages/OnboardingPage";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/login" element={<Navigate to="/auth" replace />} />
           <Route path="/auth" element={<LoginPage />} />
+          <Route path="/onboarding" element={<OnboardingPage />} />
           <Route path="/planos" element={<PlanosPage />} />
           <Route path="/renovacao" element={<RenovacaoPage />} />
           <Route path="/venda-finalizada" element={<VendaFinalizadaPage />} />
