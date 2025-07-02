@@ -44,17 +44,17 @@ const VendasPage = () => {
         </div>
       </div>
 
-      {/* Stats Cards */}
+      {/* Stats Cards - sem cores */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card className="border-l-4 border-l-primary">
+        <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="font-inter text-sm font-medium">
+            <CardTitle className="font-inter text-sm font-medium text-muted-foreground">
               Vendas Hoje
             </CardTitle>
             <DollarSign className="h-4 w-4 text-primary" />
           </CardHeader>
           <CardContent>
-            <div className="font-cantarell text-2xl font-bold">R$ 13.647,00</div>
+            <div className="font-cantarell text-2xl font-bold text-foreground">R$ 13.647,00</div>
             <div className="flex items-center text-xs text-green-600 font-inter mt-1">
               <TrendingUp className="h-3 w-3 mr-1" />
               +12% em relação a ontem
@@ -62,15 +62,15 @@ const VendasPage = () => {
           </CardContent>
         </Card>
 
-        <Card className="border-l-4 border-l-blue-500">
+        <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="font-inter text-sm font-medium">
+            <CardTitle className="font-inter text-sm font-medium text-muted-foreground">
               Pedidos Hoje
             </CardTitle>
-            <ShoppingCart className="h-4 w-4 text-blue-500" />
+            <ShoppingCart className="h-4 w-4 text-primary" />
           </CardHeader>
           <CardContent>
-            <div className="font-cantarell text-2xl font-bold">28</div>
+            <div className="font-cantarell text-2xl font-bold text-foreground">28</div>
             <div className="flex items-center text-xs text-green-600 font-inter mt-1">
               <TrendingUp className="h-3 w-3 mr-1" />
               +7 novos pedidos
@@ -78,15 +78,15 @@ const VendasPage = () => {
           </CardContent>
         </Card>
 
-        <Card className="border-l-4 border-l-orange-500">
+        <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="font-inter text-sm font-medium">
+            <CardTitle className="font-inter text-sm font-medium text-muted-foreground">
               Ticket Médio
             </CardTitle>
-            <Target className="h-4 w-4 text-orange-500" />
+            <Target className="h-4 w-4 text-primary" />
           </CardHeader>
           <CardContent>
-            <div className="font-cantarell text-2xl font-bold">R$ 487,39</div>
+            <div className="font-cantarell text-2xl font-bold text-foreground">R$ 487,39</div>
             <div className="flex items-center text-xs text-red-600 font-inter mt-1">
               <TrendingDown className="h-3 w-3 mr-1" />
               -3% este mês
@@ -94,15 +94,15 @@ const VendasPage = () => {
           </CardContent>
         </Card>
 
-        <Card className="border-l-4 border-l-green-500">
+        <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="font-inter text-sm font-medium">
+            <CardTitle className="font-inter text-sm font-medium text-muted-foreground">
               Meta Mensal
             </CardTitle>
-            <Users className="h-4 w-4 text-green-500" />
+            <Users className="h-4 w-4 text-primary" />
           </CardHeader>
           <CardContent>
-            <div className="font-cantarell text-2xl font-bold">84%</div>
+            <div className="font-cantarell text-2xl font-bold text-foreground">84%</div>
             <div className="text-xs text-muted-foreground font-inter mt-1">
               R$ 42.150,00 de R$ 50.000,00
             </div>
@@ -184,8 +184,8 @@ const VendasPage = () => {
 
         <Card className="hover:shadow-md transition-shadow cursor-pointer">
           <CardContent className="flex items-center p-6">
-            <div className="w-12 h-12 bg-blue-500/10 rounded-full flex items-center justify-center mr-4">
-              <Search className="h-6 w-6 text-blue-500" />
+            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+              <Search className="h-6 w-6 text-primary" />
             </div>
             <div>
               <h3 className="font-cantarell font-semibold">Buscar Produto</h3>
@@ -196,8 +196,8 @@ const VendasPage = () => {
 
         <Card className="hover:shadow-md transition-shadow cursor-pointer">
           <CardContent className="flex items-center p-6">
-            <div className="w-12 h-12 bg-green-500/10 rounded-full flex items-center justify-center mr-4">
-              <Users className="h-6 w-6 text-green-500" />
+            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+              <Users className="h-6 w-6 text-primary" />
             </div>
             <div>
               <h3 className="font-cantarell font-semibold">Clientes</h3>

@@ -7,7 +7,8 @@ import {
   BarChart, 
   Settings,
   Archive,
-  FileText
+  FileText,
+  ShoppingCart
 } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 import {
@@ -25,6 +26,7 @@ import {
 
 const navigationItems = [
   { title: "Dashboard", url: "/dashboard", icon: LayoutDashboard },
+  { title: "PDV", url: "/dashboard/pdv", icon: ShoppingCart },
   { title: "Vendas", url: "/dashboard/vendas", icon: DollarSign },
   { title: "Estoque", url: "/dashboard/estoque", icon: Archive },
   { title: "Clientes", url: "/dashboard/clientes", icon: Users },

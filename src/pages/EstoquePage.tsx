@@ -56,17 +56,17 @@ const EstoquePage = () => {
         </div>
       </div>
 
-      {/* Stats Cards */}
+      {/* Stats Cards - sem cores */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card className="border-l-4 border-l-primary">
+        <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="font-inter text-sm font-medium">
+            <CardTitle className="font-inter text-sm font-medium text-muted-foreground">
               Total de Produtos
             </CardTitle>
             <Package className="h-4 w-4 text-primary" />
           </CardHeader>
           <CardContent>
-            <div className="font-cantarell text-2xl font-bold">1,847</div>
+            <div className="font-cantarell text-2xl font-bold text-foreground">1,847</div>
             <div className="flex items-center text-xs text-green-600 font-inter mt-1">
               <TrendingUp className="h-3 w-3 mr-1" />
               +47 novos este mês
@@ -74,12 +74,12 @@ const EstoquePage = () => {
           </CardContent>
         </Card>
 
-        <Card className="border-l-4 border-l-red-500">
+        <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="font-inter text-sm font-medium">
+            <CardTitle className="font-inter text-sm font-medium text-muted-foreground">
               Produtos em Falta
             </CardTitle>
-            <AlertTriangle className="h-4 w-4 text-red-500" />
+            <AlertTriangle className="h-4 w-4 text-primary" />
           </CardHeader>
           <CardContent>
             <div className="font-cantarell text-2xl font-bold text-red-600">8</div>
@@ -89,30 +89,30 @@ const EstoquePage = () => {
           </CardContent>
         </Card>
 
-        <Card className="border-l-4 border-l-green-500">
+        <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="font-inter text-sm font-medium">
+            <CardTitle className="font-inter text-sm font-medium text-muted-foreground">
               Valor do Estoque
             </CardTitle>
-            <BarChart3 className="h-4 w-4 text-green-500" />
+            <BarChart3 className="h-4 w-4 text-primary" />
           </CardHeader>
           <CardContent>
-            <div className="font-cantarell text-2xl font-bold">R$ 127.890,00</div>
+            <div className="font-cantarell text-2xl font-bold text-foreground">R$ 127.890,00</div>
             <p className="font-inter text-xs text-muted-foreground mt-1">
               Total investido
             </p>
           </CardContent>
         </Card>
 
-        <Card className="border-l-4 border-l-blue-500">
+        <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="font-inter text-sm font-medium">
+            <CardTitle className="font-inter text-sm font-medium text-muted-foreground">
               Categorias Ativas
             </CardTitle>
-            <Tag className="h-4 w-4 text-blue-500" />
+            <Tag className="h-4 w-4 text-primary" />
           </CardHeader>
           <CardContent>
-            <div className="font-cantarell text-2xl font-bold">12</div>
+            <div className="font-cantarell text-2xl font-bold text-foreground">12</div>
             <p className="font-inter text-xs text-muted-foreground mt-1">
               Diferentes categorias
             </p>
@@ -123,7 +123,7 @@ const EstoquePage = () => {
       {/* Two Column Layout */}
       <div className="grid gap-6 lg:grid-cols-2">
         {/* Low Stock Alert */}
-        <Card className="border-red-200">
+        <Card>
           <CardHeader>
             <div className="flex items-center justify-between">
               <CardTitle className="font-cantarell text-xl font-semibold flex items-center">
@@ -139,7 +139,7 @@ const EstoquePage = () => {
           <CardContent>
             <div className="space-y-4">
               {lowStockProducts.map((product, index) => (
-                <div key={index} className="flex items-center justify-between p-3 bg-red-50 rounded-lg border border-red-200">
+                <div key={index} className="flex items-center justify-between p-3 bg-muted rounded-lg border">
                   <div className="flex-1">
                     <h4 className="font-inter font-medium">{product.nome}</h4>
                     <p className="font-inter text-sm text-muted-foreground">{product.categoria}</p>
@@ -157,7 +157,7 @@ const EstoquePage = () => {
         </Card>
 
         {/* Top Selling Products */}
-        <Card className="border-green-200">
+        <Card>
           <CardHeader>
             <div className="flex items-center justify-between">
               <CardTitle className="font-cantarell text-xl font-semibold flex items-center">
@@ -173,7 +173,7 @@ const EstoquePage = () => {
           <CardContent>
             <div className="space-y-4">
               {topProducts.map((product, index) => (
-                <div key={index} className="flex items-center justify-between p-3 bg-green-50 rounded-lg border border-green-200">
+                <div key={index} className="flex items-center justify-between p-3 bg-muted rounded-lg border">
                   <div className="flex-1">
                     <h4 className="font-inter font-medium">{product.nome}</h4>
                     <p className="font-inter text-sm text-muted-foreground">{product.categoria}</p>
@@ -242,8 +242,8 @@ const EstoquePage = () => {
 
         <Card className="hover:shadow-md transition-shadow cursor-pointer">
           <CardContent className="flex items-center p-6">
-            <div className="w-12 h-12 bg-blue-500/10 rounded-full flex items-center justify-center mr-4">
-              <Boxes className="h-6 w-6 text-blue-500" />
+            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+              <Boxes className="h-6 w-6 text-primary" />
             </div>
             <div>
               <h3 className="font-cantarell font-semibold">Entrada</h3>
@@ -254,8 +254,8 @@ const EstoquePage = () => {
 
         <Card className="hover:shadow-md transition-shadow cursor-pointer">
           <CardContent className="flex items-center p-6">
-            <div className="w-12 h-12 bg-orange-500/10 rounded-full flex items-center justify-center mr-4">
-              <BarChart3 className="h-6 w-6 text-orange-500" />
+            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+              <BarChart3 className="h-6 w-6 text-primary" />
             </div>
             <div>
               <h3 className="font-cantarell font-semibold">Relatórios</h3>
@@ -266,8 +266,8 @@ const EstoquePage = () => {
 
         <Card className="hover:shadow-md transition-shadow cursor-pointer">
           <CardContent className="flex items-center p-6">
-            <div className="w-12 h-12 bg-green-500/10 rounded-full flex items-center justify-center mr-4">
-              <Tag className="h-6 w-6 text-green-500" />
+            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+              <Tag className="h-6 w-6 text-primary" />
             </div>
             <div>
               <h3 className="font-cantarell font-semibold">Categorias</h3>

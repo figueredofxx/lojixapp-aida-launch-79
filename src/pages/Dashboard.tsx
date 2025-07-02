@@ -6,6 +6,10 @@ import { DashboardHeader } from "@/components/DashboardHeader";
 import { DashboardContent } from "@/components/DashboardContent";
 import VendasPage from "@/pages/VendasPage";
 import EstoquePage from "@/pages/EstoquePage";
+import RelatoriosPage from "@/pages/RelatoriosPage";
+import PDVPage from "@/pages/PDVPage";
+import ClientesPage from "@/pages/ClientesPage";
+import ConfiguracoesPage from "@/pages/ConfiguracoesPage";
 
 const Dashboard = () => {
   return (
@@ -18,6 +22,10 @@ const Dashboard = () => {
             <Route index element={<DashboardContent />} />
             <Route path="vendas" element={<VendasPage />} />
             <Route path="estoque" element={<EstoquePage />} />
+            <Route path="relatorios" element={<RelatoriosPage />} />
+            <Route path="pdv" element={<PDVPage />} />
+            <Route path="clientes" element={<ClientesPage />} />
+            <Route path="configuracoes" element={<ConfiguracoesPage />} />
           </Routes>
         </SidebarInset>
       </div>
