@@ -1,11 +1,10 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { ShoppingCart, Search, Plus, Minus, Trash2, CreditCard, DollarSign, Calculator, Receipt, User } from "lucide-react";
+import { ShoppingCart, Search, Plus, Minus, Trash2, CreditCard, DollarSign, Calculator, Receipt, User, CashRegister, Eye } from "lucide-react";
 import {
   Table,
   TableBody,
@@ -14,6 +13,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import CaixaDialog from "@/components/CaixaDialog";
+import PedidoVisualizacao from "@/components/PedidoVisualizacao";
 
 const PDVPage = () => {
   const [cartItems, setCartItems] = useState([
@@ -84,6 +85,12 @@ const PDVPage = () => {
           </p>
         </div>
         <div className="flex gap-2">
+          <CaixaDialog>
+            <Button variant="outline" className="font-inter">
+              <CashRegister className="mr-2 h-4 w-4" />
+              Gerenciar Caixa
+            </Button>
+          </CaixaDialog>
           <Button variant="outline" className="font-inter">
             <Receipt className="mr-2 h-4 w-4" />
             Últimas Vendas
@@ -258,6 +265,17 @@ const PDVPage = () => {
               </div>
               
               <div className="mt-6 space-y-2">
+                <PedidoVisualizacao>
+                  <Button 
+                    variant="outline"
+                    className="w-full font-inter"
+                    disabled={cartItems.length === 0}
+                  >
+                    <Eye className="mr-2 h-4 w-4" />
+                    Visualizar Pedido
+                  </Button>
+                </PedidoVisualizacao>
+                
                 <Button 
                   className="w-full bg-primary hover:bg-primary-hover font-inter"
                   disabled={cartItems.length === 0}

@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
-import { Settings, Building2, MapPin, Phone, Mail, FileText, Save, Upload, Edit } from "lucide-react";
+import { Settings, Building2, MapPin, Phone, Mail, FileText, Save, Upload, Edit, Shield } from "lucide-react";
 
 const ConfiguracoesPage = () => {
   return (
@@ -308,6 +308,42 @@ const ConfiguracoesPage = () => {
                 <p className="font-inter text-sm text-muted-foreground">
                   LojixApp v2.1.0
                 </p>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Warranty Information */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="font-cantarell text-xl font-semibold flex items-center">
+                <Shield className="h-5 w-5 mr-2" />
+                Termo de Garantia
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="garantia-padrao" className="font-inter">Garantia Padrão</Label>
+                <Textarea 
+                  id="garantia-padrao" 
+                  defaultValue="12 meses contra defeitos de fabricação. A garantia não cobre danos causados por mau uso, acidentes ou desgaste natural. Para acionamento da garantia, apresentar este documento e nota fiscal."
+                  className="font-inter"
+                  rows={4}
+                  placeholder="Digite o texto padrão da garantia que aparecerá nos pedidos de venda..."
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="prazo-garantia" className="font-inter">Prazo Padrão (meses)</Label>
+                <Input 
+                  id="prazo-garantia" 
+                  type="number"
+                  defaultValue="12" 
+                  className="font-inter"
+                />
+              </div>
+
+              <div className="text-sm text-muted-foreground font-inter bg-muted/50 p-3 rounded-lg">
+                <p>Este texto aparecerá automaticamente em todos os pedidos de venda impressos.</p>
               </div>
             </CardContent>
           </Card>
