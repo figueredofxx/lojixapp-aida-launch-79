@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, Play, Sparkles, X, CheckCircle, CreditCard, Globe, Clock } from "lucide-react";
 
 const HeroSection = () => {
   return (
@@ -8,7 +8,8 @@ const HeroSection = () => {
         <div className="flex flex-col items-center text-center space-y-8 max-w-4xl mx-auto">
           {/* Badge */}
           <div className="inline-flex items-center rounded-full border border-border bg-background/50 backdrop-blur-sm px-4 py-2 text-sm font-inter text-muted-foreground">
-            ✨ Mais de 1.000 lojistas já usam o LojixApp
+            <Sparkles className="h-4 w-4 text-primary mr-2" />
+            Mais de 1.000 lojistas já usam o LojixApp
           </div>
 
           {/* Main Headline */}
@@ -28,13 +29,16 @@ const HeroSection = () => {
           {/* Pain Points */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-3xl text-sm font-inter">
             <div className="flex items-center justify-center p-3 rounded-lg bg-destructive/10 text-destructive">
-              ❌ Estoque descontrolado
+              <X className="h-4 w-4 mr-2 flex-shrink-0" />
+              Estoque descontrolado
             </div>
             <div className="flex items-center justify-center p-3 rounded-lg bg-destructive/10 text-destructive">
-              ❌ Perda de garantias
+              <X className="h-4 w-4 mr-2 flex-shrink-0" />
+              Perda de garantias
             </div>
             <div className="flex items-center justify-center p-3 rounded-lg bg-destructive/10 text-destructive">
-              ❌ Custos de importação confusos
+              <X className="h-4 w-4 mr-2 flex-shrink-0" />
+              Custos de importação confusos
             </div>
           </div>
 
@@ -60,13 +64,16 @@ const HeroSection = () => {
           {/* Trust Indicators */}
           <div className="flex flex-col sm:flex-row items-center gap-6 text-sm font-inter text-muted-foreground">
             <div className="flex items-center gap-2">
-              ✅ Sem cartão de crédito
+              <CreditCard className="h-4 w-4 text-primary" />
+              Sem cartão de crédito
             </div>
             <div className="flex items-center gap-2">
-              ✅ Suporte em português
+              <Globe className="h-4 w-4 text-primary" />
+              Suporte em português
             </div>
             <div className="flex items-center gap-2">
-              ✅ Setup em 24h
+              <Clock className="h-4 w-4 text-primary" />
+              Setup em 24h
             </div>
           </div>
         </div>

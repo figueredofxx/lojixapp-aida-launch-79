@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Star, Quote } from "lucide-react";
+import { Star, Quote, Sparkles } from "lucide-react";
 
 const TestimonialsSection = () => {
   const testimonials = [
@@ -88,8 +88,9 @@ const TestimonialsSection = () => {
 
                 {/* Highlight */}
                 <div className="bg-primary/10 rounded-lg p-3 mb-6">
-                  <p className="font-inter text-sm font-semibold text-primary">
-                    ✨ {testimonial.highlight}
+                  <p className="font-inter text-sm font-semibold text-primary flex items-center gap-2">
+                    <Sparkles className="h-4 w-4" />
+                    {testimonial.highlight}
                   </p>
                 </div>
 

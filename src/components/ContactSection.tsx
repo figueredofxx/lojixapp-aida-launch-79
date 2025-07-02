@@ -11,7 +11,12 @@ import {
   Download,
   Calendar,
   Users,
-  Zap
+  Zap,
+  CheckCircle,
+  Clock,
+  Shield,
+  CreditCard,
+  Globe
 } from "lucide-react";
 
 const ContactSection = () => {
@@ -252,17 +257,21 @@ const ContactSection = () => {
                     Por que escolher a LojixApp?
                   </h4>
                   <div className="grid grid-cols-1 gap-3 text-sm font-inter">
-                    <div className="flex items-center justify-center gap-2">
-                      ✅ <span>Setup em 24h ou menos</span>
+                    <div className="flex items-center justify-center gap-3">
+                      <Clock className="h-5 w-5 text-primary flex-shrink-0" />
+                      <span>Setup em 24h ou menos</span>
                     </div>
-                    <div className="flex items-center justify-center gap-2">
-                      ✅ <span>Suporte 100% em português</span>
+                    <div className="flex items-center justify-center gap-3">
+                      <Globe className="h-5 w-5 text-primary flex-shrink-0" />
+                      <span>Suporte 100% em português</span>
                     </div>
-                    <div className="flex items-center justify-center gap-2">
-                      ✅ <span>Dados seguros na nuvem</span>
+                    <div className="flex items-center justify-center gap-3">
+                      <Shield className="h-5 w-5 text-primary flex-shrink-0" />
+                      <span>Dados seguros na nuvem</span>
                     </div>
-                    <div className="flex items-center justify-center gap-2">
-                      ✅ <span>15 dias grátis, sem compromisso</span>
+                    <div className="flex items-center justify-center gap-3">
+                      <CreditCard className="h-5 w-5 text-primary flex-shrink-0" />
+                      <span>15 dias grátis, sem compromisso</span>
                     </div>
                   </div>
                 </CardContent>
