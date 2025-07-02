@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -12,7 +11,6 @@ import {
   TrendingUp, 
   TrendingDown, 
   Calculator, 
-  CashRegister,
   FileText,
   Plus,
   Minus,
@@ -176,7 +174,7 @@ const FinanceiroPage = () => {
           <Card>
             <CardHeader>
               <CardTitle className="font-cantarell text-xl font-semibold flex items-center">
-                <CashRegister className="h-5 w-5 text-primary mr-2" />
+                <Calculator className="h-5 w-5 text-primary mr-2" />
                 Fechamento de Caixa - {new Date().toLocaleDateString()}
               </CardTitle>
             </CardHeader>
