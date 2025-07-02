@@ -1,3 +1,4 @@
+
 import { Routes, Route } from "react-router-dom";
 import { AppSidebar } from "@/components/AppSidebar";
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
@@ -10,6 +11,9 @@ import PDVPage from "@/pages/PDVPage";
 import ClientesPage from "@/pages/ClientesPage";
 import ConfiguracoesPage from "@/pages/ConfiguracoesPage";
 import FinanceiroPage from "@/pages/FinanceiroPage";
+import FornecedoresPage from "@/pages/FornecedoresPage";
+import ListaProdutosPage from "@/pages/ListaProdutosPage";
+import MultiLojasPage from "@/pages/MultiLojasPage";
 
 const Dashboard = () => {
   return (
@@ -22,10 +26,13 @@ const Dashboard = () => {
             <Route index element={<DashboardContent />} />
             <Route path="vendas" element={<VendasPage />} />
             <Route path="estoque" element={<EstoquePage />} />
+            <Route path="lista-produtos" element={<ListaProdutosPage />} />
             <Route path="relatorios" element={<RelatoriosPage />} />
             <Route path="pdv" element={<PDVPage />} />
             <Route path="clientes" element={<ClientesPage />} />
+            <Route path="fornecedores" element={<FornecedoresPage />} />
             <Route path="financeiro" element={<FinanceiroPage />} />
+            <Route path="multi-lojas" element={<MultiLojasPage />} />
             <Route path="configuracoes" element={<ConfiguracoesPage />} />
           </Routes>
         </SidebarInset>

@@ -1,8 +1,6 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Check, Star, ArrowRight, ArrowLeft } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Check, Star, ArrowRight } from "lucide-react";
 
 const PlanosPage = () => {
   const plans = [
@@ -71,13 +69,7 @@ const PlanosPage = () => {
       {/* Header */}
       <div className="border-b border-border">
         <div className="container max-w-6xl mx-auto px-4 py-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <Link to="/dashboard" className="flex items-center gap-2 text-muted-foreground hover:text-foreground">
-                <ArrowLeft className="h-4 w-4" />
-                <span className="font-inter">Voltar ao Dashboard</span>
-              </Link>
-            </div>
+          <div className="flex items-center justify-center">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                 <span className="text-primary-foreground font-cantarell font-bold text-sm">L</span>

@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Badge } from "@/components/ui/badge";
 import { 
   DollarSign, 
   TrendingUp, 
@@ -19,7 +20,10 @@ import {
   Calendar,
   PiggyBank,
   CreditCard,
-  Banknote
+  Banknote,
+  Printer,
+  ShoppingCart,
+  User
 } from "lucide-react";
 
 const FinanceiroPage = () => {
@@ -30,11 +34,33 @@ const FinanceiroPage = () => {
     lucro: 0
   });
 
-  const [caixaData, setCaixaData] = useState({
-    abertura: "1500.00",
-    vendas: "3245.80",
-    despesas: "125.50"
+  // Fechamento de Caixa - Dados essenciais
+  const [fechamentoCaixa, setFechamentoCaixa] = useState({
+    saldoInicial: "1500.00",
+    totalVendas: "3245.80",
+    totalDespesas: "125.50",
+    dinheiroContado: "",
+    diferenca: 0
   });
+
+  const [vendas] = useState([
+    { id: 1, produto: "iPhone 15 Pro", valor: 7299.00, pagamento: "Cartão", vendedor: "Maria", hora: "09:15" },
+    { id: 2, produto: "Samsung Galaxy S24", valor: 4999.00, pagamento: "PIX", vendedor: "João", hora: "10:30" },
+    { id: 3, produto: "Capinha Premium", valor: 89.90, pagamento: "Dinheiro", vendedor: "Maria", hora: "11:45" },
+    { id: 4, produto: "Carregador Wireless", valor: 159.90, pagamento: "Cartão", vendedor: "Pedro", hora: "14:20" }
+  ]);
+
+  const calcularFechamento = () => {
+    const saldoInicial = parseFloat(fechamentoCaixa.saldoInicial) || 0;
+    const totalVendas = parseFloat(fechamentoCaixa.totalVendas) || 0;
+    const totalDespesas = parseFloat(fechamentoCaixa.totalDespesas) || 0;
+    const dinheiroContado = parseFloat(fechamentoCaixa.dinheiroContado) || 0;
+    
+    const saldoTeorico = saldoInicial + totalVendas - totalDespesas;
+    const diferenca = dinheiroContado - saldoTeorico;
+    
+    setFechamentoCaixa(prev => ({ ...prev, diferenca }));
+  };
 
   const calcularMargem = () => {
     const custo = parseFloat(calculatorData.custoProduto) || 0;
@@ -169,74 +195,180 @@ const FinanceiroPage = () => {
           <TabsTrigger value="fluxo" className="font-inter">Fluxo de Caixa</TabsTrigger>
         </TabsList>
 
-        {/* Fechamento de Caixa */}
+        {/* Fechamento de Caixa - Versão Essencial */}
         <TabsContent value="caixa" className="space-y-6">
-          <Card>
-            <CardHeader>
-              <CardTitle className="font-cantarell text-xl font-semibold flex items-center">
-                <Calculator className="h-5 w-5 text-primary mr-2" />
-                Fechamento de Caixa - {new Date().toLocaleDateString()}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-6 lg:grid-cols-2">
+            {/* Registro de Vendas */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="font-cantarell text-xl font-semibold flex items-center">
+                  <ShoppingCart className="h-5 w-5 text-primary mr-2" />
+                  1. Registro de Vendas - {new Date().toLocaleDateString()}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                    <h4 className="font-cantarell font-semibold text-blue-900 mb-2">Vendas Registradas Hoje</h4>
+                    <div className="space-y-2">
+                      {vendas.map((venda) => (
+                        <div key={venda.id} className="flex justify-between items-center text-sm">
+                          <div>
+                            <span className="font-inter font-medium">{venda.produto}</span>
+                            <div className="font-inter text-xs text-blue-700">
+                              {venda.hora} • {venda.vendedor} • {venda.pagamento}
+                            </div>
+                          </div>
+                          <span className="font-cantarell font-semibold text-blue-900">
+                            R$ {venda.valor.toFixed(2)}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="mt-3 pt-3 border-t border-blue-200">
+                      <div className="flex justify-between font-cantarell font-bold text-blue-900">
+                        <span>Total de Vendas:</span>
+                        <span>R$ {vendas.reduce((acc, v) => acc + v.valor, 0).toFixed(2)}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Contagem e Comparação */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="font-cantarell text-xl font-semibold flex items-center">
+                  <Calculator className="h-5 w-5 text-primary mr-2" />
+                  2. Contagem e Comparação
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
                 <div className="space-y-4">
                   <div className="space-y-2">
-                    <Label className="font-inter">Saldo de Abertura</Label>
+                    <Label className="font-inter">Saldo Inicial do Caixa</Label>
                     <Input
                       type="number"
-                      value={caixaData.abertura}
-                      onChange={(e) => setCaixaData(prev => ({ ...prev, abertura: e.target.value }))}
+                      value={fechamentoCaixa.saldoInicial}
+                      onChange={(e) => setFechamentoCaixa(prev => ({ ...prev, saldoInicial: e.target.value }))}
                       className="font-inter"
+                      placeholder="Ex: 1500.00"
                     />
                   </div>
+                  
                   <div className="space-y-2">
-                    <Label className="font-inter">Total de Vendas</Label>
+                    <Label className="font-inter">Total de Vendas (do sistema)</Label>
                     <Input
                       type="number"
-                      value={caixaData.vendas}
-                      onChange={(e) => setCaixaData(prev => ({ ...prev, vendas: e.target.value }))}
+                      value={fechamentoCaixa.totalVendas}
+                      onChange={(e) => setFechamentoCaixa(prev => ({ ...prev, totalVendas: e.target.value }))}
                       className="font-inter"
+                      placeholder="Total das vendas registradas"
                     />
                   </div>
+
                   <div className="space-y-2">
                     <Label className="font-inter">Total de Despesas</Label>
                     <Input
                       type="number"
-                      value={caixaData.despesas}
-                      onChange={(e) => setCaixaData(prev => ({ ...prev, despesas: e.target.value }))}
+                      value={fechamentoCaixa.totalDespesas}
+                      onChange={(e) => setFechamentoCaixa(prev => ({ ...prev, totalDespesas: e.target.value }))}
                       className="font-inter"
+                      placeholder="Ex: 125.50"
                     />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label className="font-inter font-semibold text-primary">
+                      Dinheiro Contado no Caixa (REAL)
+                    </Label>
+                    <Input
+                      type="number"
+                      value={fechamentoCaixa.dinheiroContado}
+                      onChange={(e) => setFechamentoCaixa(prev => ({ ...prev, dinheiroContado: e.target.value }))}
+                      className="font-inter border-primary"
+                      placeholder="Conte o dinheiro fisicamente"
+                    />
+                  </div>
+
+                  <Button onClick={calcularFechamento} className="w-full bg-primary hover:bg-primary-hover font-inter">
+                    Calcular Diferença
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Resumo do Fechamento */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="font-cantarell text-xl font-semibold flex items-center">
+                <FileText className="h-5 w-5 text-primary mr-2" />
+                3. Resumo do Fechamento de Caixa
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-4">
+                  <div className="bg-secondary/50 p-4 rounded-lg">
+                    <h3 className="font-cantarell font-semibold mb-4">Valores Teóricos (Sistema)</h3>
+                    <div className="space-y-2 font-inter text-sm">
+                      <div className="flex justify-between">
+                        <span>Saldo Inicial:</span>
+                        <span>R$ {parseFloat(fechamentoCaixa.saldoInicial || "0").toFixed(2)}</span>
+                      </div>
+                      <div className="flex justify-between text-green-600">
+                        <span>+ Total de Vendas:</span>
+                        <span>R$ {parseFloat(fechamentoCaixa.totalVendas || "0").toFixed(2)}</span>
+                      </div>
+                      <div className="flex justify-between text-red-600">
+                        <span>- Total de Despesas:</span>
+                        <span>R$ {parseFloat(fechamentoCaixa.totalDespesas || "0").toFixed(2)}</span>
+                      </div>
+                      <hr className="my-2" />
+                      <div className="flex justify-between font-semibold text-foreground">
+                        <span>Saldo Teórico:</span>
+                        <span>R$ {(parseFloat(fechamentoCaixa.saldoInicial || "0") + parseFloat(fechamentoCaixa.totalVendas || "0") - parseFloat(fechamentoCaixa.totalDespesas || "0")).toFixed(2)}</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
                 <div className="space-y-4">
-                  <div className="bg-secondary/50 p-4 rounded-lg">
-                    <h3 className="font-cantarell font-semibold mb-4">Resumo do Caixa</h3>
+                  <div className="bg-primary/10 p-4 rounded-lg border border-primary/20">
+                    <h3 className="font-cantarell font-semibold mb-4 text-primary">Valores Reais (Contados)</h3>
                     <div className="space-y-2 font-inter text-sm">
                       <div className="flex justify-between">
-                        <span>Saldo Inicial:</span>
-                        <span>R$ {parseFloat(caixaData.abertura).toFixed(2)}</span>
+                        <span>Dinheiro Contado:</span>
+                        <span className="font-semibold">R$ {parseFloat(fechamentoCaixa.dinheiroContado || "0").toFixed(2)}</span>
                       </div>
-                      <div className="flex justify-between text-green-600">
-                        <span>+ Vendas:</span>
-                        <span>R$ {parseFloat(caixaData.vendas).toFixed(2)}</span>
-                      </div>
-                      <div className="flex justify-between text-red-600">
-                        <span>- Despesas:</span>
-                        <span>R$ {parseFloat(caixaData.despesas).toFixed(2)}</span>
+                      <div className="flex justify-between">
+                        <span>Saldo Teórico:</span>
+                        <span>R$ {(parseFloat(fechamentoCaixa.saldoInicial || "0") + parseFloat(fechamentoCaixa.totalVendas || "0") - parseFloat(fechamentoCaixa.totalDespesas || "0")).toFixed(2)}</span>
                       </div>
                       <hr className="my-2" />
-                      <div className="flex justify-between font-semibold text-foreground">
-                        <span>Saldo Final:</span>
-                        <span>R$ {(parseFloat(caixaData.abertura) + parseFloat(caixaData.vendas) - parseFloat(caixaData.despesas)).toFixed(2)}</span>
+                      <div className={`flex justify-between font-semibold ${fechamentoCaixa.diferenca > 0 ? 'text-green-600' : fechamentoCaixa.diferenca < 0 ? 'text-red-600' : 'text-foreground'}`}>
+                        <span>Diferença:</span>
+                        <span>
+                          {fechamentoCaixa.diferenca > 0 ? '+' : ''}R$ {fechamentoCaixa.diferenca.toFixed(2)}
+                          {fechamentoCaixa.diferenca > 0 && ' (Sobra)'}
+                          {fechamentoCaixa.diferenca < 0 && ' (Falta)'}
+                        </span>
                       </div>
                     </div>
                   </div>
-                  <Button className="w-full bg-primary hover:bg-primary-hover font-inter">
-                    <FileText className="mr-2 h-4 w-4" />
-                    Gerar Relatório de Fechamento
-                  </Button>
+
+                  <div className="flex gap-2">
+                    <Button className="flex-1 bg-primary hover:bg-primary-hover font-inter">
+                      <Printer className="mr-2 h-4 w-4" />
+                      Imprimir Fechamento
+                    </Button>
+                    <Button variant="outline" className="font-inter">
+                      <Download className="mr-2 h-4 w-4" />
+                      Salvar
+                    </Button>
+                  </div>
                 </div>
               </div>
             </CardContent>

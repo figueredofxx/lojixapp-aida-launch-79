@@ -9,6 +9,8 @@ import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 import LoginPage from "./pages/LoginPage";
 import PlanosPage from "./pages/PlanosPage";
+import RenovacaoPage from "./pages/RenovacaoPage";
+import VendaFinalizadaPage from "./pages/VendaFinalizadaPage";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +25,8 @@ const App = () => (
           <Route path="/login" element={<Navigate to="/auth" replace />} />
           <Route path="/auth" element={<LoginPage />} />
           <Route path="/planos" element={<PlanosPage />} />
+          <Route path="/renovacao" element={<RenovacaoPage />} />
+          <Route path="/venda-finalizada" element={<VendaFinalizadaPage />} />
           <Route path="/dashboard/*" element={<Dashboard />} />
           <Route path="/vendas" element={<Navigate to="/dashboard/vendas" replace />} />
           <Route path="/estoque" element={<Navigate to="/dashboard/estoque" replace />} />

@@ -8,7 +8,9 @@ import {
   Settings,
   Archive,
   FileText,
-  ShoppingCart
+  ShoppingCart,
+  Package,
+  Building2
 } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 import {
@@ -23,16 +25,24 @@ import {
   SidebarHeader,
   useSidebar,
 } from "@/components/ui/sidebar";
+import { Badge } from "@/components/ui/badge";
 
 const navigationItems = [
   { title: "Dashboard", url: "/dashboard", icon: LayoutDashboard },
   { title: "PDV", url: "/dashboard/pdv", icon: ShoppingCart },
   { title: "Vendas", url: "/dashboard/vendas", icon: DollarSign },
   { title: "Estoque", url: "/dashboard/estoque", icon: Archive },
+  { title: "Lista Produtos", url: "/dashboard/lista-produtos", icon: Package },
   { title: "Clientes", url: "/dashboard/clientes", icon: Users },
   { title: "Fornecedores", url: "/dashboard/fornecedores", icon: Briefcase },
   { title: "Relatórios", url: "/dashboard/relatorios", icon: BarChart },
   { title: "Financeiro", url: "/dashboard/financeiro", icon: FileText },
+  { 
+    title: "Multi-Lojas", 
+    url: "/dashboard/multi-lojas", 
+    icon: Building2, 
+    beta: true 
+  },
   { title: "Configurações", url: "/dashboard/configuracoes", icon: Settings },
 ];
 
@@ -77,7 +87,16 @@ export function AppSidebar() {
                         className="flex items-center gap-2 font-inter"
                       >
                         <item.icon className="h-4 w-4" />
-                        {!isCollapsed && <span>{item.title}</span>}
+                        {!isCollapsed && (
+                          <div className="flex items-center gap-2 flex-1">
+                            <span>{item.title}</span>
+                            {item.beta && (
+                              <Badge variant="secondary" className="text-xs">
+                                Beta
+                              </Badge>
+                            )}
+                          </div>
+                        )}
                       </NavLink>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
