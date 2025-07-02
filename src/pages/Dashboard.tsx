@@ -15,9 +15,9 @@ const Dashboard = () => {
         <SidebarInset>
           <DashboardHeader />
           <Routes>
-            <Route path="/" element={<DashboardContent />} />
-            <Route path="/vendas" element={<VendasPage />} />
-            <Route path="/estoque" element={<EstoquePage />} />
+            <Route index element={<DashboardContent />} />
+            <Route path="vendas" element={<VendasPage />} />
+            <Route path="estoque" element={<EstoquePage />} />
           </Routes>
         </SidebarInset>
       </div>
