@@ -1,4 +1,3 @@
-
 import { Routes, Route } from "react-router-dom";
 import { AppSidebar } from "@/components/AppSidebar";
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
@@ -10,6 +9,7 @@ import RelatoriosPage from "@/pages/RelatoriosPage";
 import PDVPage from "@/pages/PDVPage";
 import ClientesPage from "@/pages/ClientesPage";
 import ConfiguracoesPage from "@/pages/ConfiguracoesPage";
+import FinanceiroPage from "@/pages/FinanceiroPage";
 
 const Dashboard = () => {
   return (
@@ -25,6 +25,7 @@ const Dashboard = () => {
             <Route path="relatorios" element={<RelatoriosPage />} />
             <Route path="pdv" element={<PDVPage />} />
             <Route path="clientes" element={<ClientesPage />} />
+            <Route path="financeiro" element={<FinanceiroPage />} />
             <Route path="configuracoes" element={<ConfiguracoesPage />} />
           </Routes>
         </SidebarInset>

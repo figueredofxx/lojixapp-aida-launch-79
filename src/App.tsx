@@ -7,6 +7,8 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
+import LoginPage from "./pages/LoginPage";
+import PlanosPage from "./pages/PlanosPage";
 
 const queryClient = new QueryClient();
 
@@ -18,12 +20,16 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/login" element={<Navigate to="/auth" replace />} />
+          <Route path="/auth" element={<LoginPage />} />
+          <Route path="/planos" element={<PlanosPage />} />
           <Route path="/dashboard/*" element={<Dashboard />} />
           <Route path="/vendas" element={<Navigate to="/dashboard/vendas" replace />} />
           <Route path="/estoque" element={<Navigate to="/dashboard/estoque" replace />} />
           <Route path="/relatorios" element={<Navigate to="/dashboard/relatorios" replace />} />
           <Route path="/pdv" element={<Navigate to="/dashboard/pdv" replace />} />
           <Route path="/clientes" element={<Navigate to="/dashboard/clientes" replace />} />
+          <Route path="/financeiro" element={<Navigate to="/dashboard/financeiro" replace />} />
           <Route path="/configuracoes" element={<Navigate to="/dashboard/configuracoes" replace />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
