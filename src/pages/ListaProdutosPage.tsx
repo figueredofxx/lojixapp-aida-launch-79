@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -13,7 +12,7 @@ import {
   ArrowUpDown, 
   Package, 
   Smartphone,
-  Transfer,
+  ArrowRightLeft,
   Eye,
   Edit,
   AlertTriangle
@@ -343,7 +342,7 @@ const ListaProdutosPage = () => {
                         <Edit className="h-4 w-4" />
                       </Button>
                       <Button size="sm" variant="outline">
-                        <Transfer className="h-4 w-4" />
+                        <ArrowRightLeft className="h-4 w-4" />
                       </Button>
                     </div>
                   </TableCell>
